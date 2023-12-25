@@ -1,11 +1,14 @@
 import os
 import time
 from scripts.physton_prompt.get_lang import get_lang
+from modules import shared
 
 model = None
 tokenizer = None
 model_name = "facebook/mbart-large-50-many-to-many-mmt"
-cache_dir = os.path.normpath(os.path.dirname(os.path.abspath(__file__)) + '/../../models')
+cache_dir = os.path.join(shared.cmd_opts.data_dir, 'models')
+if shared.cmd_opts.just_ui:
+    cache_dir = os.path.join(os.path.dirname(shared.cmd_opts.data_dir), 'models')
 loading = False
 
 def initialize(reload=False):
