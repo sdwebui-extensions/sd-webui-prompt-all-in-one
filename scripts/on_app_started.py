@@ -367,7 +367,7 @@ def on_app_started(_: gr.Blocks, app: FastAPI):
         return {"css_list": get_extension_css_list()}
 
     @app.get("/physton_prompt/get_extra_networks")
-    async def _get_extra_networks():
+    def _get_extra_networks():
         return {"extra_networks": get_extra_networks()}
 
     @app.post("/physton_prompt/gen_openai")
