@@ -31,6 +31,9 @@ def initialize(reload=False):
     model_file = os.path.join(model_path, "pytorch_model.bin")
     if os.path.exists(model_path) and os.path.exists(model_file):
         model_name = model_path
+    elif os.path.exists('/stable-diffusion-cache/mbart-large-50-many-to-many-mmt') and os.path.exists('/stable-diffusion-cache/mbart-large-50-many-to-many-mmt/pytorch_model.bin'):
+        model_name = '/stable-diffusion-cache/mbart-large-50-many-to-many-mmt'
+        cache_dir = '/stable-diffusion-cache'
 
     try:
         from transformers import MBart50TokenizerFast, MBartForConditionalGeneration
