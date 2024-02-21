@@ -56,8 +56,10 @@ def translate(text, src_lang, target_lang):
             return ''
 
     if model is None:
-        initialize()
-        raise Exception(get_lang('model_not_initialized'))
+        try:
+            initialize()
+        except:
+            raise Exception(get_lang('model_not_initialized'))
 
     if tokenizer is None:
         raise Exception(get_lang('model_not_initialized'))
